@@ -93,12 +93,12 @@ export default function AiToolsPage() {
             />
             <ToolCard
               icon="⚡"
-              name="Codex / ChatGPT"
+              name="Codex"
               maker="OpenAI"
-              badge="コード補完・質問"
+              badge="コード特化モデル"
               badgeColor="green"
-              desc="OpenAIが提供するコード特化モデル。GitHub Copilotの基盤技術。コードの補完・説明・変換が得意。Claude Codeと並ぶ主要AIコーディングアシスタント。"
-              strengths={["GitHub Copilotとして統合", "コードの説明・解説が得意", "多言語対応", "IDE（VS Code）との連携"]}
+              desc="OpenAIが提供するコード特化AIモデル。GitHub Copilotの基盤技術として採用されており、コードの補完・説明・変換が得意。ターミナルから直接操作できるCLI版も登場。"
+              strengths={["GitHub Copilotの基盤技術", "コードの説明・解説が得意", "CLI版でターミナルから操作可能", "IDE（VS Code）との深い連携"]}
             />
             <ToolCard
               icon="🔮"
@@ -110,11 +110,20 @@ export default function AiToolsPage() {
               strengths={["AIと会話しながらコーディング", "コードベース全体を理解して提案", "Claude・GPT両方を利用可能", "VS Codeの操作感そのまま"]}
             />
             <ToolCard
+              icon="🌐"
+              name="Gemini Code Assist"
+              maker="Google"
+              badge="Google連携"
+              badgeColor="yellow"
+              desc="GoogleのAIモデルGeminiをベースにしたコーディングアシスタント。Google WorkspaceやFirebaseとの連携が強力。Project IDXというブラウザ上の開発環境も提供。"
+              strengths={["Google Workspace・Docsと連携", "Firebase・GCPとの相性が良い", "ブラウザ上で開発できるIDX", "無料枠が充実している"]}
+            />
+            <ToolCard
               icon="📝"
               name="Obsidian"
               maker="Obsidian MD"
               badge="知識管理・メモ"
-              badgeColor="yellow"
+              badgeColor="pink"
               desc="マークダウンベースのノートアプリ。AIとの連携プラグインで、蓄積した知識をAIに参照させながら作業できる。設計メモ・アイデア整理・クライアント情報管理に活用されている。"
               strengths={["ローカル保存でプライバシー安全", "AIプラグインで知識をRAG活用", "リンクで情報を網のように繋げる", "Vaultで案件ごとに管理"]}
             />
@@ -216,6 +225,53 @@ export default function AiToolsPage() {
         </div>
       </section>
 
+      {/* Comparison Table */}
+      <section className="border-b border-[#21262d]">
+        <div className="max-w-5xl mx-auto px-6 py-20">
+          <SectionLabel>比較表</SectionLabel>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">主要AIコーディングツール 比較</h2>
+          <p className="text-[#8b949e] mb-12">2025年現在の客観的な評価です。</p>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-[#21262d]">
+                  <th className="text-left py-3 pr-4 text-[#8b949e] font-medium w-32">観点</th>
+                  <th className="text-center py-3 px-3 text-[#8b5cf6] font-bold">Claude Code</th>
+                  <th className="text-center py-3 px-3 text-[#26a69a] font-bold">Codex</th>
+                  <th className="text-center py-3 px-3 text-[#3b82f6] font-bold">Cursor</th>
+                  <th className="text-center py-3 px-3 text-[#f59e0b] font-bold">Gemini</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { label: "日本語の自然さ", cc: "◎", cx: "○", cu: "○", gm: "○" },
+                  { label: "コード生成品質", cc: "◎", cx: "◎", cu: "◎", gm: "○" },
+                  { label: "ファイル操作", cc: "◎", cx: "○", cu: "○", gm: "△" },
+                  { label: "IDE連携", cc: "○", cx: "◎", cu: "◎", gm: "◎" },
+                  { label: "Google連携", cc: "△", cx: "△", cu: "△", gm: "◎" },
+                  { label: "無料枠", cc: "△", cx: "△", cu: "△", gm: "◎" },
+                  { label: "デザイナー向け", cc: "◎", cx: "○", cu: "○", gm: "△" },
+                  { label: "将来性", cc: "◎", cx: "◎", cu: "◎", gm: "◎" },
+                ].map(({ label, cc, cx, cu, gm }) => (
+                  <tr key={label} className="border-b border-[#21262d]">
+                    <td className="py-4 pr-4 text-[#e6edf3]">{label}</td>
+                    <td className="py-4 px-3 text-center text-[#8b5cf6] font-semibold">{cc}</td>
+                    <td className="py-4 px-3 text-center text-[#26a69a] font-semibold">{cx}</td>
+                    <td className="py-4 px-3 text-center text-[#3b82f6] font-semibold">{cu}</td>
+                    <td className="py-4 px-3 text-center text-[#f59e0b] font-semibold">{gm}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-6 p-4 rounded-xl bg-[#161b22] border border-[#21262d] text-xs text-[#8b949e]">
+            ◎ 優秀　○ 良好　△ 限定的　— 対応なし　※ 2025年6月時点の評価
+          </div>
+        </div>
+      </section>
+
       {/* Caution */}
       <section className="border-b border-[#21262d]">
         <div className="max-w-5xl mx-auto px-6 py-20">
@@ -256,11 +312,13 @@ export default function AiToolsPage() {
             判断はまだ人間にしかできません。AIを使いこなす人と使えない人の差は、今後さらに広がっていきます。
           </p>
 
-          <div className="grid md:grid-cols-3 gap-4 text-left">
+          <div className="grid md:grid-cols-5 gap-3 text-left">
             {[
-              { icon: "🤖", label: "Claude Code", use: "コード生成・実装・修正" },
-              { icon: "📝", label: "Obsidian", use: "情報整理・知識管理" },
-              { icon: "⚡", label: "Cursor / Codex", use: "コード補完・IDE連携" },
+              { icon: "🤖", label: "Claude Code", use: "コード生成・実装" },
+              { icon: "⚡", label: "Codex", use: "コード補完・CLI" },
+              { icon: "🔮", label: "Cursor", use: "AIエディター" },
+              { icon: "🌐", label: "Gemini", use: "Google連携" },
+              { icon: "📝", label: "Obsidian", use: "知識管理" },
             ].map(({ icon, label, use }) => (
               <div key={label} className="p-4 rounded-xl bg-[#161b22] border border-[#21262d] flex items-center gap-3">
                 <span className="text-2xl">{icon}</span>
@@ -296,7 +354,7 @@ function ToolCard({
   name: string;
   maker: string;
   badge: string;
-  badgeColor: "purple" | "green" | "blue" | "yellow";
+  badgeColor: "purple" | "green" | "blue" | "yellow" | "pink";
   desc: string;
   strengths: string[];
 }) {
@@ -305,6 +363,7 @@ function ToolCard({
     green: "bg-[#26a69a]/10 text-[#26a69a] border-[#26a69a]/30",
     blue: "bg-[#3b82f6]/10 text-[#3b82f6] border-[#3b82f6]/30",
     yellow: "bg-[#f59e0b]/10 text-[#f59e0b] border-[#f59e0b]/30",
+    pink: "bg-[#ec4899]/10 text-[#ec4899] border-[#ec4899]/30",
   };
   return (
     <div className="p-6 rounded-xl bg-[#161b22] border border-[#21262d] flex flex-col">
